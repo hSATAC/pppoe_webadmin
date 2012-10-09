@@ -61,7 +61,7 @@ function radius_sql_exists($name)
   if(pg_num_rows($result) > 0) $exists = true;
   
   pg_close($dbconn);
-  $exists = false;
+
   return $exists;
 }
 
