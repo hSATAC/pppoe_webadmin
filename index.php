@@ -68,8 +68,18 @@ $app->post('/radius/add', function() use($app, $environments) {
       $app->redirect("/pppoe/iptable");
       exit;
     }
-    //$app->render('user.tpl.php', array('whoami' => $name, 'environments' => $environments));
-     echo "test";
+    
+    if(radius_sql_exists($name)) {
+      $app->flash('err_msg', "Radius account ". $name . " exists!");
+      $app->redirect("/pppoe/iptable");
+      exit;
+    }
+
+    radius_insert_radcheck($name);
+    radius_insert_radgroupcheck($name);
+    radius_insert_radippool($name);
+    radius_insert_radusergroup($name);
+
     $app->flash('ok_msg', $name . "'s Radius account has been created.");
     $app->redirect("/pppoe/iptable");
 });
