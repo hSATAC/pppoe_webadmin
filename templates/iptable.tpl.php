@@ -52,7 +52,7 @@
               <tr>
               <?php endif; ?>
                 <td><?=$env_index?></td>
-                <td><?=$name?></td>
+                <td><a href="/pppoe/user/<?=$name?>"><?=$name?></a></td>
                 <td><?=$user_env?></td>
                 <td><?=$env['subnet']?></td>
                 <td><?=$env['http']?></td>

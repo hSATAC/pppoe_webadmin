@@ -45,3 +45,22 @@ function which_env($name)
 
   return $env;
 }
+
+# check if radius account exists
+function radius_sql_exists($name)
+{
+  $exists = false;
+  global $environments;
+  
+  if(!array_key_exists($name, $environments)) return $exists;
+
+  $id = $environments[$name]['_id'] . "@miiicasa.com";
+
+  $dbconn = pg_connect("host=localhost port=5432 dbname=radius user=postgres");
+  $result = pg_query_params($dbconn, 'SELECT * FROM radcheck WHERE username = $1', array($id));
+  if(pg_num_rows($result) > 0) $exists = true;
+  
+  pg_close($dbconn);
+  $exists = false;
+  return $exists;
+}
