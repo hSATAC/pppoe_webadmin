@@ -31,7 +31,7 @@
       ?>
       <div class="alert">
 	  <button type="button" class="close" data-dismiss="alert">×</button>
-          <strong>Warning!</strong> You have <?=$rule_count?> iptable rules, you should have 6. Please contact Ash.
+          <strong>Warning!</strong> You have <?=$rule_count?> iptable rules, you should have 8. Please contact Ash.
       </div>
 
       <?php

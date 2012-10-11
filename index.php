@@ -24,6 +24,12 @@ $app->get('/iptable', function () use($app, $environments) {
     $app->render('iptable.tpl.php', array("environments" => $environments));
 });
 
+# stauts check 
+$app->get('/status', function () use($app, $environments) {
+ 
+    $app->render('status.tpl.php', array("environments" => $environments));
+});
+
 # switch iptables env
 $app->post('/iptable/switch', function () use($app, $environments) {
     $user = $app->request()->post('user');

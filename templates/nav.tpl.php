@@ -10,7 +10,8 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li id="nav_index"><a href="/pppoe">Home</a></li>
-              <li id="nav_iptable"><a href="/pppoe/iptable">iptable</a></li>
+              <li id="nav_iptable"><a href="/pppoe/iptable">Iptable</a></li>
+              <li id="nav_status"><a href="/pppoe/status">Status</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

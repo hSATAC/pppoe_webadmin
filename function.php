@@ -26,14 +26,14 @@ COMMAND;
 
 function which_env($name)
 {
-  $env = "unknown";
+  $env = "alpha";
   global $environments;
 
   if(!array_key_exists($name, $environments)) return $env;
 
   $subnet = $environments[$name]['subnet'];
   $current_env = explode(":", exec("sudo iptables -L -t nat -n | grep $subnet | head -n 1"));
-  if(count($current_env) == 0) return $env;
+  if(count($current_env) == 1) return $env;
   switch ($current_env[2]) {
   case "10.22.254.9":
     $env = "devm1";
