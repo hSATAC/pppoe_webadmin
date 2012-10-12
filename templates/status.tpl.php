@@ -70,7 +70,7 @@
       $devm1_status = exec("ping -W 1 -c 1 10.22.254.9 | grep time= | wc -l");
       if ($devm1_status != "1"):
       ?>
-      <span class="label label-important">Error</span> devm1 vpn is not connected.
+      <span class="label label-important">Error</span> devm1 vpn is not connected. Run `/home/yihua_liang/bin/vpn-pppssh-61` on devm1 to connect.
       <?php else:?>
       <span class="label label-success">OK</span> devm1 vpn is connected.
       <?php endif;?>
@@ -80,7 +80,7 @@
       $devm2_status = exec("ping -W 1 -c 1 10.22.254.8 | grep time= | wc -l");
       if ($devm2_status != "1"):
       ?>
-      <span class="label label-important">Error</span> devm2 vpn is not connected.
+      <span class="label label-important">Error</span> devm2 vpn is not connected. Run `/root/bin/vpn-pppssh-61` on devm2 to connect.
       <?php else:?>
       <span class="label label-success">OK</span> devm2 vpn is connected.
       <?php endif;?>
