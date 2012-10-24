@@ -31,7 +31,7 @@
         if(array_key_exists($whoami, $environments)) {
           $rule_count = exec("sudo iptables -L -t nat -n | grep $subnet | wc -l");
         
-          if ((int)$rule_count != 8){
+          if ((int)$rule_count != 6){
       ?>
       <div class="alert">
 	  <button type="button" class="close" data-dismiss="alert">×</button>

@@ -11,15 +11,20 @@ function cidr_match($ip, $range)
 
 function make_iptables_command($action, $subnet, $http_port, $https_port, $from, $to)
 {
+/*
+  To flush iptables use:
+  iptables -t nat -F
+  iptables -t nat -A POSTROUTING -d 127.0.0.1/32 -j RETURN
+  iptables -t nat -A POSTROUTING -d 192.168.79.61/32 -j RETURN
+  iptables -t nat -A POSTROUTING ! -d 10.0.0.0/8 -j MASQUERADE
+*/
   $command = <<<COMMAND
 sudo iptables -t nat -$action PREROUTING -s $subnet -d $from -p tcp -m tcp --dport $http_port -j DNAT --to-destination $to:$http_port
 sudo iptables -t nat -$action PREROUTING -s $subnet -d $from -p tcp -m tcp --dport 80 -j DNAT --to-destination $to:$http_port
-sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.9 -p tcp -m tcp --dport 80 -j DNAT --to-destination $to:$http_port
-sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.9 -p tcp -m tcp --dport $http_port -j DNAT --to-destination $to:$http_port
+sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.8 -p tcp -m tcp --dport 80 -j DNAT --to-destination $to:$http_port
 sudo iptables -t nat -$action PREROUTING -s $subnet -d $from -p tcp -m tcp --dport $https_port -j DNAT --to-destination $to:$https_port
 sudo iptables -t nat -$action PREROUTING -s $subnet -d $from -p tcp -m tcp --dport 443 -j DNAT --to-destination $to:$https_port
-sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.9 -p tcp -m tcp --dport 443 -j DNAT --to-destination $to:$https_port
-sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.9 -p tcp -m tcp --dport $https_port -j DNAT --to-destination $to:$https_port
+sudo iptables -t nat -$action PREROUTING -s $subnet -d 192.168.254.8 -p tcp -m tcp --dport 443 -j DNAT --to-destination $to:$https_port
 COMMAND;
   return $command;
 }

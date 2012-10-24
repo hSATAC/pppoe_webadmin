@@ -42,7 +42,7 @@ $app->post('/iptable/switch', function () use($app, $environments) {
   }
 
   // delete former rules first.
-  system(make_iptables_command('D', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.9', '10.22.254.8'));
+  system(make_iptables_command('D', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.8', '10.22.254.8'));
   system(make_iptables_command('D', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.9', '10.22.254.9'));
 
   // insert new rule
@@ -51,7 +51,7 @@ $app->post('/iptable/switch', function () use($app, $environments) {
     system(make_iptables_command('I', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.9', '10.22.254.9'));
     break;
   case "devm2":
-    system(make_iptables_command('I', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.9', '10.22.254.8'));
+    system(make_iptables_command('I', $environments[$user]['subnet'], $environments[$user]['http'], $environments[$user]['https'], '10.22.254.8', '10.22.254.8'));
     break;
   }
 

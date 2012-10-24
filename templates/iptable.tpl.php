@@ -20,7 +20,6 @@
 
       <label>Env</label>
       <select name="env">
-        <option>devm1</option>
         <option>devm2</option>
       </select>
       <button type="input" class="btn btn-primary">Submit</button>
