@@ -26,14 +26,14 @@ $environments = array(
 		"https" => "50053",
 		"subnet" => "10.10.5.0/24",
       ),
-      /*
-	"RD(Caesar)" => array(
+      
+	"RD(Ted)" => array(
 		"_id" => "caesar_chi",
 		"http" => "50070",
 		"https" => "50073",
 		"subnet" => "10.10.7.0/24",
 	    ),
-       */
+       
       /*
 	"RD(Mei)" => array(
 		"_id" => "mei_lin",

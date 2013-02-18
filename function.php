@@ -1,4 +1,12 @@
 <?php
+function delete_iptables($subnet)
+{
+  exec("sudo iptables -L -t nat -n --line-numbers | grep $subnet | awk '{print $1}'", $return);
+  rsort($return);
+  foreach ($return as $line) {
+    exec("sudo iptables -t nat -D PREROUTING $line");
+  }
+}
 function cidr_match($ip, $range)
 {
   list ($subnet, $bits) = explode('/', $range);

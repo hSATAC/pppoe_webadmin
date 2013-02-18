@@ -21,6 +21,7 @@
       <label>Env</label>
       <select name="env">
         <option>devm2</option>
+        <option>devm1</option>
       </select>
       <button type="input" class="btn btn-primary">Submit</button>
       </form>
